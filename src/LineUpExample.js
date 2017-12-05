@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {iris_json, iris_json2} from './data/Data_IRIS.js';
 import {testCNVTable} from './data/Data_CNV.js';
-
+import 'font-awesome/css/font-awesome.min.css';
 
 class LineUpExample extends Component {
   constructor (props) {
