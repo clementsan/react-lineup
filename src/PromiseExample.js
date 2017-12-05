@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 let prom = new Promise(function (resolve, reject) {
  setTimeout(function () {
-   resolve('Dataset: IRIS')
+   resolve('Dataset: CNV Table')
  }, 100)
 })
 
