@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {iris_json} from './Data_IRIS.js';
+import {iris_json, iris_json2} from './data/Data_IRIS.js';
+import {testCNVTable} from './data/Data_CNV.js';
 
 
 class LineUpExample extends Component {
@@ -23,18 +24,20 @@ class LineUpExample extends Component {
     }
   }
  
+ 
   createLineUp (element) {
   	return new Promise(function (resolve, reject) {
-		  const dataset = iris_json;
-		  console.log("dataset",dataset);
+		  const JSONdataset = iris_json2;
+		  //const dataset = testCNVTable;
+		  console.log("JSONdataset",JSONdataset);
 		  const LineUp = window.LineUpJS;
 		  console.log("LineUp",LineUp);
-		  const test = window.LineUpJS.deriveColumnDescriptions(dataset).catch(error=>{console.log(error)});
-		  const data = window.LineUpJS.createLocalStorage(dataset, test);
-		  data.deriveDefault();
-		  console.log("data",data);
-		  var instance = window.LineUpJS.createTaggle(data, element);
-		  console.log("instance",instance);
+		  const ColumnDescriptions = window.LineUpJS.deriveColumnDescriptions(JSONdataset);
+		  const LineUpdata = window.LineUpJS.createLocalStorage(JSONdataset, ColumnDescriptions);
+		  LineUpdata.deriveDefault();
+		  console.log("LineUpdata",LineUpdata);
+		  var instance = window.LineUpJS.createTaggle(LineUpdata, element);
+		  console.log("LineUpinstance",instance);
 		  instance.update();
 		  resolve(instance);
 		});

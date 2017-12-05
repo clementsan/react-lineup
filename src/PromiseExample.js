@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 let prom = new Promise(function (resolve, reject) {
  setTimeout(function () {
-   resolve('a value')
- }, 1000)
+   resolve('Dataset: IRIS')
+ }, 100)
 })
 
 class PromiseExample extends Component {
@@ -29,7 +29,7 @@ class PromiseExample extends Component {
 
   render () {
     if (!this.state.val) return null;
-    return <div>{this.state.val}</div>
+    return <h3>{this.state.val}</h3>
   }
 }
 
