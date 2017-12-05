@@ -28,6 +28,7 @@ class LineUpExample extends Component {
   }
 
   componentDidMount() {
+  	// this.launchLineUp();
   }
 
 
@@ -38,14 +39,15 @@ class LineUpExample extends Component {
       }
     }
   }
-
+ 
   createLineUp (element) {
   	return new Promise(function (resolve, reject) {
 		  const dataset = iris_json;
 		  console.log("dataset",dataset);
 		  const LineUp = window.LineUpJS;
 		  console.log("LineUp",LineUp);
-		  const data = window.LineUpJS.createLocalStorage(dataset, window.LineUpJS.deriveColumnDescriptions(dataset));
+		  const test = window.LineUpJS.deriveColumnDescriptions(dataset).catch(error=>{console.log(error)});
+		  const data = window.LineUpJS.createLocalStorage(dataset, test);
 		  data.deriveDefault();
 		  console.log("data",data);
 		  var instance = window.LineUpJS.createTaggle(data, element);
@@ -55,11 +57,18 @@ class LineUpExample extends Component {
 		});
   }
 
-  render () {
-    <div className = "LineUp"
-      ref = {this.launchLineUp()}>
-    </div>
+  // render () {
+  // 	return
+  //   <div className = "LineUp">
+  //     {this.state.val}
+  //   </div>
+  // }
+
+    render () {
+    // if (!this.state.val) return null;
+    return <div ref={this.launchLineUp()}></div>
   }
 }
+
 
 export default LineUpExample;
